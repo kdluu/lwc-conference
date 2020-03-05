@@ -1,5 +1,6 @@
 const URL = 'https://conference-lwc-app.herokuapp.com/api/sessions';
 let sessions = [];
+// Return sessionList
 export const getSessions = () => fetch(URL)
     .then(response => {
         if (!response.ok) {
@@ -14,6 +15,7 @@ export const getSessions = () => fetch(URL)
         return sessions;
 
     });
+// Return sessionId
 export const getSession = sessionId => {
     return sessions.find(session => {
         return session.id === sessionId;

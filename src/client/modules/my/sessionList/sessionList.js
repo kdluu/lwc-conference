@@ -8,9 +8,17 @@ export default class SessionList extends LightningElement {
         });
     }
     handleSearchKeyInput(event) {
-        const searchKey = event.target.value.toLowerCase();
+        const searchKey = event.target.value.toLowerCase(); // Get the search key from html
         this.sessions = this.allSessions.filter(
             session => session.name.toLowerCase().includes(searchKey)
         )
+    }
+    handleSessionClick(event) {
+        const index = event.currentTarget.dataset.index;
+
+        const navigateEvent = new CustomEvent('navigate', {
+            detail: this.sessions[index].id
+        });
+        this.dispatchEvent(navigateEvent)
     }
 }
